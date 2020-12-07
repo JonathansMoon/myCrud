@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+
+  db:
+    image: mysql
+    container_name: plenos-mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: "plenos"
+    restart: always
+    volumes:
+      - /home/Docker/Volumes/MySql:/var/lib/mysql
+    ports:
+      - 3308:3306
+
+  adminer:
+    image: adminer
+    container_name: plenos-adminer
+    restart: always
+    ports:
+      - 8000:8080
